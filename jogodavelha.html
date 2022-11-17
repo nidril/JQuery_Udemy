@@ -17,9 +17,10 @@
 
                 //verificação se os nomes foram preenchidos:
                 if(jog1.trim().length > 0 && jog2.trim().length > 0){
+                    $(".msg").text("");
                     comecarJogo();
                 } else {
-                    alert("Nome(s) não preenchido(s)");
+                    $(".msg").text("Nome(s) não preenchido(s)");
                 }
 
             });
@@ -29,6 +30,9 @@
             var contadorClicks = 0;
             //contar os clicks para definir se X ou O
             //IMPAR=X e PAR=O
+
+            var interval = setInterval(tempoDecorrido, 500);
+            
 
             $("table td").click(function(){
                 contadorClicks++;
@@ -47,7 +51,7 @@
                         contadorClicks = 9;
                     }
                     if(contadorClicks == 9){
-                        $("#msg").text("Jogo encerrado!");
+                        $(".msg").append("<br>Jogo encerrado!");
                     }
                 }
             });
@@ -106,15 +110,22 @@
                     }
                     vencedor[i][y]
                 }
+
+                var jog1 = $("input[name=jogador1]").val();
+                var jog2 = $("input[name=jogador2]").val();
                 if(contadorX == 3){
-                    alert("X ganhou");
+                    $(".msg").text(jog1 + " ganhou!");
                     return true;
                 }
                 if(contadorO == 3){
-                    alert("O ganhou");
+                    $(".msg").text(jog2 + " ganhou!");
                     return true;
                 }
             }
+        }
+
+        function tempoDecorrido(){
+            $("#tempo").text()
         }
 
     </script>
@@ -122,6 +133,9 @@
 </head>
 <body>
     <div class="config">
+        <div class="msg">
+
+        </div>
         <span>X</span><input type="text" name="jogador1" placeholder="Jogador 01">
         vs
         <input type="text" name="jogador2" placeholder="Jogador 02"><span>O</span>
@@ -129,7 +143,7 @@
         <br>
         <button id="btn_comecar">Começar Jogo</button>
     </div>
-    <div id="msg"></div>
+    
     <!--Usando uma tabela pra fazer o corpo do jogo-->
         <!--
             'table' é o 'quadro' ao redor da tabela
@@ -172,5 +186,8 @@
             <td></td>
         </tr>
     </table>
+
+    <div id="tempo">10:00</div>
+
 </body>
 </html>
