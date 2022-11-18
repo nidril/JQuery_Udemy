@@ -16,7 +16,7 @@ table td {
     text-align: center;
     font-size: 96px;
 }
-.config {
+.config, #tempo {
     text-align: center;
     border: none;
     margin-bottom: 10px;
@@ -34,4 +34,12 @@ table td {
     padding: 8px 16px 12px 15px;
     vertical-align: baseline;
     border: none;
+}
+
+.msg {
+    width: 100%;
+    background-color: lightgray;
+    margin-bottom: 10px;
+    height: 40px;
+    text-align: center;
 }
